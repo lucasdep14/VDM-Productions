@@ -2,8 +2,10 @@
 :root {
     --primary-orange: #ff6600;
     --deep-black: #0a0a0a;
+    --card-bg: #141414;
     --light-grey: #f4f4f4;
     --text-white: #ffffff;
+    --text-muted: #bbb;
 }
 
 body {
@@ -76,12 +78,13 @@ nav a:hover {
     border-radius: 5px;
     font-weight: bold;
     margin-top: 20px;
-    transition: transform 0.2s;
+    transition: transform 0.2s, background-color 0.2s;
     display: inline-block;
 }
 
 .btn-cta:hover {
     transform: scale(1.05);
+    background-color: #e65c00;
 }
 
 /* Algemene Sectie Styles */
@@ -92,11 +95,8 @@ section {
 .section-title {
     color: var(--primary-orange);
     display: block;
-    /* Maak er een blok van over de volle breedte */
     width: fit-content;
-    /* Zorg dat het kader (en de streep) stopt na de tekst */
     margin: 0 auto 40px auto;
-    /* De 'auto' op links en rechts duwt de titel naar het midden */
     text-align: center;
     border-bottom: 2px solid var(--primary-orange);
     padding-bottom: 5px;
@@ -104,7 +104,6 @@ section {
 
 .category h1 {
     text-align: center;
-    /* Centreert 'Licht' en 'Geluid' titels */
     margin-bottom: 30px;
 }
 
@@ -117,7 +116,7 @@ section {
 }
 
 .card {
-    background: #111;
+    background: var(--card-bg);
     border: 1px solid #333;
     border-radius: 8px;
     overflow: hidden;
@@ -149,7 +148,7 @@ section {
 .card p {
     margin: 0 15px 15px;
     font-size: 0.9rem;
-    color: #bbb;
+    color: var(--text-muted);
 }
 
 .card span {
@@ -202,39 +201,76 @@ section {
 
 .review-text p {
     font-style: italic;
-    color: #bbb;
+    color: var(--text-muted);
     margin: 0;
 }
 
-/* FAQ Sectie */
+/* FAQ Accordion Styling (Staat nu goed buiten de media query) */
 .faq-container {
     max-width: 800px;
     margin: 0 auto;
 }
 
 .faq-item {
-    background: #1a1a1a;
-    border: 1px solid #333;
-    padding: 20px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    transition: border-color 0.3s;
+    background: var(--card-bg);
+    border: 1px solid #2a2a2a;
+    padding: 18px 22px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    transition: border-color 0.3s, background-color 0.3s;
 }
 
 .faq-item:hover {
     border-color: var(--primary-orange);
 }
 
-.faq-item h4 {
+.faq-item summary {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+/* Verbergt de standaard lelijke browser pijl */
+.faq-item summary::-webkit-details-marker,
+.faq-item summary::marker {
+    display: none !important;
+}
+
+/* Strak oranje plusje als icon */
+.faq-item summary::after {
+    content: '+';
     color: var(--primary-orange);
-    margin: 0 0 10px 0;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+/* Verandert het plusje in een min/draait om wanneer open */
+.faq-item[open] summary::after {
+    transform: rotate(45deg);
+}
+
+.faq-item h4 {
+    color: #fff; /* Wit is beter leesbaar voor een gesloten vraag */
+    margin: 0;
+    font-size: 1.05rem;
+    transition: color 0.3s;
+}
+
+.faq-item:hover h4 {
+    color: var(--primary-orange);
 }
 
 .faq-item p {
-    margin: 0;
-    color: #bbb;
+    margin-top: 15px;
+    margin-bottom: 0;
+    color: var(--text-muted);
     font-size: 0.95rem;
+    border-top: 1px solid #222;
+    padding-top: 12px;
 }
 
 /* Footer */
@@ -243,7 +279,7 @@ footer {
     padding: 40px 5% 20px;
     border-top: 1px solid #333;
     font-size: 0.9rem;
-    color: #bbb;
+    color: var(--text-muted);
 }
 
 .footer-grid {
@@ -275,7 +311,6 @@ li {
 
 /* Mobiele Responsiviteit */
 @media (max-width: 600px) {
-
     .review-container,
     .review-container.reverse {
         flex-direction: column;
@@ -285,58 +320,4 @@ li {
     .review-image {
         margin-bottom: 15px;
     }
-
-    /* FAQ Accordion Styling */
-.faq-item {
-    background: #1a1a1a;
-    border: 1px solid #333;
-    padding: 15px 20px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    transition: border-color 0.3s;
-}
-
-.faq-item:hover {
-    border-color: var(--primary-orange);
-}
-
-.faq-item summary {
-    cursor: pointer;
-    list-style: none; /* Verwijdert de standaard pijl in sommige browsers */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Verbergt de standaard pijl in Chrome/Safari */
-.faq-item summary::-webkit-details-marker {
-    display: none;
-}
-
-/* Eigen custom pijl toevoegen */
-.faq-item summary::after {
-    content: '▼';
-    color: var(--primary-orange);
-    font-size: 0.8rem;
-    transition: transform 0.3s ease;
-}
-
-/* Draait de pijl om wanneer het item open staat */
-.faq-item[open] summary::after {
-    transform: rotate(180deg);
-}
-
-.faq-item h4 {
-    color: var(--primary-orange);
-    margin: 0;
-    font-size: 1.1rem;
-    display: inline;
-}
-
-.faq-item p {
-    margin-top: 15px;
-    margin-bottom: 0;
-    color: #bbb;
-    font-size: 0.95rem;
-}
 }
