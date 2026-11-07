@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="images/VDM Logo(2.0).png" rel="icon" type="image/x-icon">
+    <title>404 - Pagina Niet Gevonden | VDM Productions</title>
+    <style>
+        /* Dezelfde visuele sfeer als de hoofdpagina */
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #ff6600;
+            --text-muted: #a0a0a0;
+            --accent-color: #ff3333;
+            /* Subtiel lichtaccent */
+            --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header {
+            width: 100%;
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        header a {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--text-color);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .error-container {
+            max-width: 600px;
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin: auto;
+        }
+
+        .error-code {
+            font-size: 6rem;
+            font-weight: 800;
+            color: var(--text-color);
+            line-height: 1;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 51, 51, 0.3);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 12px 24px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            padding: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="https://lucasdep14.github.io/VDM-Productions/">VDM Productions</a>
+    </header>
+
+    <main class="error-container">
+        <div class="error-code">404</div>
+        <h1>Oeps! Hier is geen licht of geluid.</h1>
+        <p>De pagina die je zoekt bestaat niet, is verplaatst of de verbinding is even verbroken. Geen zorgen, onze
+            techniek werkt elders op de site nog prima!</p>
+        <a href="https://lucasdep14.github.io/VDM-Productions/" class="btn">Terug naar de homepage</a>
+    </main>
+
+    <footer>
+        © copyright VDM Productions 2026
+        </i>
+
+</body>
+
+</html>
